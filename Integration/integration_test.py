@@ -1,33 +1,19 @@
-# import addition
-# import multiplication
-import calculator
-def test_integration():
-    # Test multiplying the result of adding two numbers with another number
-    assert calculator.multiply(calculator.add(2, 3), 4) == 20
+import unittest
+from integration_test import km_to_miles
 
+class TestKmToMiles(unittest.TestCase):
+    def test_positive_input(self):
+        self.assertAlmostEqual(km_to_miles(1), 0.621371, places=6)
+        self.assertAlmostEqual(km_to_miles(10), 6.21371, places=5)
+        self.assertAlmostEqual(km_to_miles(100), 62.1371, places=4)
 
+    def test_zero_input(self):
+        self.assertEqual(km_to_miles(0), 0)
 
-## Unit testing
+    def test_negative_input(self):
+        self.assertAlmostEqual(km_to_miles(-1), -0.621371, places=6)
+        self.assertAlmostEqual(km_to_miles(-10), -6.21371, places=5)
+        self.assertAlmostEqual(km_to_miles(-100), -62.1371, places=4)
 
-# def test_addition():
-#     assert calculator.add(2, 3) == 5
-#
-# def test_subtraction():
-#     assert calculator.subtract(5, 3) == 2
-#
-# def test_multiplication():
-#     assert calculator.multiply(2, 3) == 6
-#
-# def test_division():
-#     assert calculator.divide(6, 3) == 2
-#
-# def test_divide_by_zero():
-#     try:
-#         calculator.divide(6, 0)
-#     except ValueError as e:
-#         assert str(e) == "Cannot divide by zero"
-#     else:
-#         assert False, "Expected ValueError"
-#
-#
-#
+if __name__ == '__main__':
+    unittest.main()
